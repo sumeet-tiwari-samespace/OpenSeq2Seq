@@ -55,7 +55,7 @@ std::vector<std::pair<size_t, float>> get_pruned_log_probs(
     size_t cutoff_top_n);
 
 // Get beam search result from prefixes in trie tree
-std::vector<std::pair<double, std::string>> get_beam_search_result(
+std::vector<std::pair<std::vector<uint32_t>, std::string>> get_beam_search_result(
     const std::vector<PathTrie *> &prefixes,
     const std::vector<std::string> &vocabulary,
     size_t beam_size,
