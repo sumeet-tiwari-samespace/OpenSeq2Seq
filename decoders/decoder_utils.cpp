@@ -38,7 +38,7 @@ std::vector<std::pair<size_t, float>> get_pruned_log_probs(
 }
 
 
-std::vector<std::pair<double, std::string>> get_beam_search_result(
+std::vector<std::pair<std::vector<uint32_t>, std::string>> get_beam_search_result(
     const std::vector<PathTrie *> &prefixes,
     const std::vector<std::string> &vocabulary,
     size_t beam_size,
@@ -52,7 +52,7 @@ std::vector<std::pair<double, std::string>> get_beam_search_result(
   }
 
   std::sort(space_prefixes.begin(), space_prefixes.end(), prefix_compare);
-  std::vector<std::pair<double, std::string>> output_vecs;
+  std::vector<std::pair<std::vector<uint32_t>, std::string>> output_vecs;
   std::vector<uint32_t> timestamps;
   for (size_t i = 0; i < beam_size && i < space_prefixes.size(); ++i) {
     std::vector<int> output;
@@ -63,7 +63,7 @@ std::vector<std::pair<double, std::string>> get_beam_search_result(
     for (size_t j = 0; j < output.size(); j++) {
       output_str += vocabulary[output[j]];
     }
-    std::pair<double, std::string> output_pair(space_prefixes[i]->score,
+    std::pair<std::vector<uint32_t>, std::string> output_pair(timestamps,
                                                output_str);
     output_vecs.emplace_back(output_pair);
   }
