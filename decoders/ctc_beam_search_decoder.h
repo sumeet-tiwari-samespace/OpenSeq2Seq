@@ -23,7 +23,7 @@
  *     A vector that each element is a pair of score  and decoding result,
  *     in desending order.
 */
-std::vector<std::pair<double, std::string>> ctc_beam_search_decoder(
+std::vector<std::pair<std::vector<uint32_t>, std::string>> ctc_beam_search_decoder(
     const std::vector<std::vector<double>> &probs_seq,
     const std::vector<std::string> &vocabulary,
     size_t beam_size,
@@ -94,7 +94,7 @@ private:
  *     A 2-D vector that each element is a vector of beam search decoding
  *     result for one audio sample.
 */
-std::vector<std::vector<std::pair<double, std::string>>>
+std::vector<std::vector<std::pair<std::vector<uint32_t>, std::string>>>
 ctc_beam_search_decoder_batch(
     const std::vector<std::vector<std::vector<double>>> &probs_split,
     const std::vector<std::string> &vocabulary,

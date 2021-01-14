@@ -15,7 +15,7 @@
 
 using FSTMATCH = fst::SortedMatcher<fst::StdVectorFst>;
 
-std::vector<std::pair<double, std::string>> ctc_beam_search_decoder(
+std::vector<std::pair<std::vector<uint32_t>, std::string>> ctc_beam_search_decoder(
     const std::vector<std::vector<double>> &probs_seq,
     const std::vector<std::string> &vocabulary,
     size_t beam_size,
@@ -267,7 +267,7 @@ void BeamDecoder::reset(bool keep_offset /*default = false*/, bool keep_words /*
   }
   root = new PathTrie();
   root->score = root->log_prob_b_prev = 0.0;
-  
+
   prefixes.clear();
   prefixes.push_back(root);
 

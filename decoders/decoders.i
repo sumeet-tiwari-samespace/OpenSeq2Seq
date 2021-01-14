@@ -19,7 +19,7 @@ namespace std {
     %template(FloatVector) std::vector<float>;
     %template(Pair) std::pair<float, std::string>;
     %template(PairFloatStringVector)  std::vector<std::pair<float, std::string> >;
-    %template(PairDoubleStringVector) std::vector<std::pair<double, std::string> >;
+    %template(PairDoubleStringVector) std::vector<std::pair<std::vector<uint32_t>, std::string> >;
     %template(PairDoubleStringVector2) std::vector<std::vector<std::pair<double, std::string> > >;
     %template(DoubleVector3) std::vector<std::vector<std::vector<double> > >;
 }
