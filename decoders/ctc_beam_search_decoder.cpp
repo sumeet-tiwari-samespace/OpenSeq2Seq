@@ -299,7 +299,7 @@ void BeamDecoder::reset(bool keep_offset /*default = false*/, bool keep_words /*
 }
 
 
-std::vector<std::pair<double, std::string>> BeamDecoder::decode(const std::vector<std::vector<double>> &probs_seq)
+std::vector<std::pair<std::vector<uint32_t>, std::string>> BeamDecoder::decode(const std::vector<std::vector<double>> &probs_seq)
 {
   // dimension check
   size_t num_time_steps = probs_seq.size();
@@ -423,7 +423,7 @@ void BeamDecoder::get_word_timestamps(
 }
 
 
-std::vector<std::vector<std::pair<double, std::string>>>
+std::vector<std::vector<std::pair<std::vector<uint32_t>, std::string>>>
 ctc_beam_search_decoder_batch(
     const std::vector<std::vector<std::vector<double>>> &probs_split,
     const std::vector<std::string> &vocabulary,
